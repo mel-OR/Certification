@@ -1,0 +1,10 @@
+version: '3'
+services:
+  mongodb:
+    image: mongodb/mongodb-community-server:6.0-ubi8
+    volumes:
+      - type: bind
+        source: ./data
+        target: /data/db
+    container_name: database
+    network_mode: host
