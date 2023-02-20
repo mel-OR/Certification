@@ -6,13 +6,13 @@ const assessment = new Router({ prefix: '/assessment' });
 
 assessment
 	.get('/', async (ctx: Koa.Context) => {
-		assessmentControllers.getAssessment(ctx);
+		await assessmentControllers.getAssessment(ctx);
 	})
 	.get('/:id', async (ctx: Koa.Context) => {
-		assessmentControllers.getAssessmentById(ctx);
+		await assessmentControllers.getAssessmentById(ctx);
 	})
 	.post('/', async (ctx: Koa.Context) => {
-		assessmentControllers.createAssessment(ctx);
+		await assessmentControllers.createAssessment(ctx);
 	});
 
 export default assessment.routes();

@@ -3,11 +3,13 @@ import Koa from 'koa';
 
 export async function getAssessment(ctx: Koa.Context) {
 	var result;
-	if (!ctx.query) {
+	console.log(ctx.query);
+	if (ctx.query.participantId) {
+		result = await Assessment.find({ participatnId: ctx.query.participantId });
+		ctx.body = result;
+	} else {
 		console.log("Get all participants' assessments");
 		result = await Assessment.find();
-	} else {
-		result = await Assessment.find(ctx.query);
 		ctx.body = result;
 	}
 }
