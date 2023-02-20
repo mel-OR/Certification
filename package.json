@@ -18,7 +18,6 @@
 		"@types/mongoose": "^5.11.97",
 		"@types/node": "^18.11.19",
 		"koa": "^2.14.1",
-		"koa-body": "^6.0.1",
 		"koa-bodyparser": "^4.3.0",
 		"koa-json": "^2.0.2",
 		"koa-logger": "^3.2.1",
