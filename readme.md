@@ -11,4 +11,6 @@
 
 # WHAT IS NOT IMPLEMENTED
 - Authorization/authentication
+- extensive error handling
+- 100% test coverage
 - Running the entire app in a container/utilize docker-compose

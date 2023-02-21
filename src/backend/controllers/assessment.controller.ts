@@ -2,23 +2,15 @@ import Assessment from '../models/assessment.model';
 import Koa from 'koa';
 
 export async function getAssessment(ctx: Koa.Context) {
-	var result;
-	console.log(ctx.query);
 	if (ctx.query.participantId) {
-		result = await Assessment.find({ participatnId: ctx.query.participantId });
-		ctx.body = result;
+		ctx.body = await Assessment.find({ participatnId: ctx.query.participantId });
 	} else {
-		console.log("Get all participants' assessments");
-		result = await Assessment.find();
-		ctx.body = result;
+		ctx.body = await Assessment.find();
 	}
 }
 
 export async function getAssessmentById(ctx: Koa.Context) {
-	const result = await Assessment.findById(ctx.params.id);
-	if (result) {
-		ctx.body = result;
-	}
+	ctx.body = await Assessment.findById(ctx.params.id);
 }
 
 export async function createAssessment(ctx: Koa.Context) {

@@ -1,6 +1,5 @@
 import { Schema, model } from 'mongoose';
 import {
-	certificationLevel,
 	silverWeeds,
 	goldWeeds,
 	platinumWeeds,
@@ -42,22 +41,22 @@ interface Certification {
 
 const CertificationSchema: Schema = new Schema({
 	assessmentId: { type: String, required: true },
-	certificationLevel: { type: String, enum: certificationLevel, required: true },
+	certificationLevel: { type: String },
 	gardenTour: Boolean,
 	weeds: {
-		silver: [ { type: String, enum: silverWeeds } ],
-		gold: [ { type: String, enum: goldWeeds } ],
+		silver: [ { type: String, enum: silverWeeds, required: true } ],
+		gold: [ { type: String, enum: goldWeeds, required: true } ],
 		platinum: [ { type: String, enum: platinumWeeds } ]
 	},
 	naturescaping: {
-		canopyLayers: [ { type: String, enum: canopyLayers } ],
+		canopyLayers: [ { type: String, enum: canopyLayers, required: true } ],
 		naturescapedArea: { type: Number, required: true },
 		totalTrees: { type: Number, required: true },
 		totalOtherPlants: { type: Number, required: true },
 		oakscaping: { type: Boolean, required: true },
-		percentNaturescaped: Number //(round and calc from input),
+		percentNaturescaped: Number
 	},
-	pesticideReduction: [ { type: String, enum: pesticideStrategy } ], //--tricky error handling, redo or ignore certain combos?
+	pesticideReduction: [ { type: String, enum: pesticideStrategy } ],
 	wildlifeStewardship: {
 		hasCats: { type: Boolean, required: true },
 		wildlifeItems: [ { type: String, enum: wildlifeItems } ]

@@ -1,7 +1,13 @@
 export const certificationLevel = [ 'none', 'silver', 'gold', 'platinum' ];
 
+export enum certificationLevels {
+	NONE = 0,
+	SILVER = 1,
+	GOLD = 2,
+	PLATINUM = 3
+}
+
 export const silverWeeds = [
-	null,
 	'Evergreen Blackberry',
 	'Garlic Mustard',
 	'Giant Hogweed',
@@ -20,7 +26,6 @@ export const silverWeeds = [
 ];
 
 export const goldWeeds = [
-	null,
 	'Butterfly Bush',
 	'False Brome',
 	'Hedge Bindweed',
@@ -38,7 +43,6 @@ export const goldWeeds = [
 ];
 
 export const platinumWeeds = [
-	null,
 	'Creeping Jenny',
 	'English/Portuguese Laurel',
 	'Fennel',
@@ -51,12 +55,11 @@ export const platinumWeeds = [
 	'Tree-of-Heaven'
 ];
 
-export const canopyLayers = [ null, 'ground cover', 'small/medium shrub', 'large shrub', 'small tree', 'large tree' ];
+export const canopyLayers = [ 'ground cover', 'small-medium shrub', 'large shrub', 'small tree', 'large tree' ];
 
-export const pesticideStrategy = [ null, 'IPM', 'no red', 'no yellow', 'metro pledge' ];
+export const pesticideStrategy = [ 'IPM', 'no-red', 'no-yellow', 'metro-pledge' ];
 
 export const wildlifeItems = [
-	null,
 	'cats indoors',
 	'reduce collisions',
 	'nurse log',
@@ -68,7 +71,6 @@ export const wildlifeItems = [
 ];
 
 export const stormwaterManagement = [
-	null,
 	'eco-maintenance',
 	'extra naturescape',
 	'restore soil',
@@ -81,7 +83,6 @@ export const stormwaterManagement = [
 ];
 
 export const volunteerItems = [
-	null,
 	'BHCP volunteer',
 	'garden tour',
 	'master gardener',

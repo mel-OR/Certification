@@ -13,6 +13,9 @@ certification
 	})
 	.post('/', async (ctx: Koa.Context) => {
 		await certificationControllers.createCertification(ctx);
+	})
+	.put('/', async (ctx: Koa.Context) => {
+		await certificationControllers.updateCertification(ctx);
 	});
 
 export default certification.routes();
