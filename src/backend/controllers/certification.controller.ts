@@ -197,6 +197,6 @@ async function calculateCertificationLevel(data: Certification) {
 				score = currentScore!;
 			}
 		}
-		return score;
+		return certificationLevels[score];
 	}
 }
