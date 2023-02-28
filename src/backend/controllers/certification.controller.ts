@@ -2,7 +2,7 @@ import Certification from '../models/certification.model';
 import Koa from 'koa';
 import Participant from '../models/participant.model';
 import Assessment from '../models/assessment.model';
-import { certificationLevels, certificationLevel } from '../../constants';
+import { certificationLevels } from '../../constants';
 
 export async function getCertification(ctx: Koa.Context) {
 	const result = await Certification.find();
@@ -27,6 +27,8 @@ export async function createCertification(ctx: Koa.Context) {
 		ctx.body = findResult;
 		console.log('Certification already exists');
 	} else {
+		//to-do: make sure valid assessment record exists before creating certification based on the assessmentId
+		//In the meantime, can update the Certification record if the assessmentId is incorrect
 		const percentNaturescaped = await calculatePercentNaturescaped(data);
 		data.naturescaping.percentNaturescaped = <Number>percentNaturescaped;
 		const certificationLevel = await calculateCertificationLevel(data);
@@ -111,16 +113,16 @@ function calculatePesticideReduction(data: Certification) {
 	var metro_pledge = false;
 	if (data.pesticideReduction.length > 1) {
 		data.pesticideReduction.map((item) => {
-			if ((item = 'IPM')) {
+			if (item == 'IPM') {
 				ipm = true;
 			}
-			if ((item = 'no-red')) {
+			if (item == 'no-red') {
 				no_red = true;
 			}
-			if ((item = 'no-yellow')) {
+			if (item == 'no-yellow') {
 				no_yellow = true;
 			}
-			if ((item = 'metro-pledge')) {
+			if (item == 'metro-pledge') {
 				metro_pledge = true;
 			}
 		});
@@ -197,6 +199,7 @@ async function calculateCertificationLevel(data: Certification) {
 				score = currentScore!;
 			}
 		}
+		console.log('certification score ' + certificationLevels[score]);
 		return certificationLevels[score];
 	}
 }

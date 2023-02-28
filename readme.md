@@ -5,7 +5,7 @@
 
 
 # RUNNING THE APP
-- Start the database container <code>docker run --name database -p 27017:27017 -v {{absolute path to /Certification/data}}:/data/db -d mongo:latest</code>
+- Create and start the database container <code>docker run --name database -p 27017:27017 -v {{absolute path to /Certification/data}}:/data/db -d mongo:latest</code>
 <code> yarn run-backend </code>
 
 
