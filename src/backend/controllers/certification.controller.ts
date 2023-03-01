@@ -31,7 +31,7 @@ export async function createCertification(ctx: Koa.Context) {
 		//In the meantime, can update the Certification record if the assessmentId is incorrect
 		const percentNaturescaped = await calculatePercentNaturescaped(data);
 		data.naturescaping.percentNaturescaped = <Number>percentNaturescaped;
-		const certificationLevel = await calculateCertificationLevel(data);
+		const certificationLevel = calculateCertificationLevel(data);
 		data.certificationLevel = <String>certificationLevel!;
 		const result = await new Certification(ctx.request.body).save();
 		ctx.body = result;
@@ -42,9 +42,9 @@ export async function updateCertification(ctx: Koa.Context) {
 	const data = <Certification>ctx.request.body;
 	const percentNaturescaped = await calculatePercentNaturescaped(data);
 	data.naturescaping.percentNaturescaped = <Number>percentNaturescaped;
-	const certificationLevel = await calculateCertificationLevel(data);
+	const certificationLevel = calculateCertificationLevel(data);
 	data.certificationLevel = <String>certificationLevel!;
-	const result = await new Certification(ctx.request.body).save();
+	const result = await Certification.findByIdAndUpdate(ctx.params.id, data);
 	ctx.body = result;
 }
 
@@ -168,7 +168,7 @@ function calculateOutreach(data: Certification) {
 	}
 }
 
-async function calculateCertificationLevel(data: Certification) {
+function calculateCertificationLevel(data: Certification) {
 	const certificationScores = {
 		weedsLevel: calculateWeeds(data),
 		naturescapingLevel: calculateNaturescaping(data.naturescaping.percentNaturescaped),

@@ -14,7 +14,7 @@ certification
 	.post('/', async (ctx: Koa.Context) => {
 		await certificationControllers.createCertification(ctx);
 	})
-	.put('/', async (ctx: Koa.Context) => {
+	.put('/:id', async (ctx: Koa.Context) => {
 		await certificationControllers.updateCertification(ctx);
 	});
 
