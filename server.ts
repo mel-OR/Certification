@@ -2,10 +2,12 @@ import Koa, { HttpError } from 'koa';
 import logger from 'koa-logger';
 import router from './src/backend/routes/routes';
 import bodyParser from 'koa-bodyparser';
+import cors from '@koa/cors';
 
 const server = new Koa();
 
 server
+	.use(cors({ origin: '*' }))
 	.use(bodyParser({ enableTypes: [ 'json' ], jsonLimit: '100mb' }))
 	.use(router.routes())
 	.use(router.allowedMethods)

@@ -3,7 +3,7 @@
       "moduleResolution": "node",
       "target": "es6",
       "module": "commonjs",
-      "lib": ["esnext"],
+      "lib": ["esnext", "es6", "dom"],
       "strict": true,
       "sourceMap": true,
       "declaration": true,
@@ -13,7 +13,10 @@
       "emitDecoratorMetadata": true,
       "declarationDir": "./dist",
       "outDir": "./dist",
-      "typeRoots": ["node_modules/@types"]
+      "typeRoots": ["node_modules/@types"],
+      "noImplicitAny": true,
+      "noImplicitThis": true,
+      "strictNullChecks": true
     },
     "include": ["src/**/*.ts"],
     "exclude": ["node_modules"]
