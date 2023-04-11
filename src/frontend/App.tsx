@@ -2,6 +2,7 @@ import { Button, Container, Box } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { getParticipants } from './api/participant';
 
 export default function App() {
 	const [ participants, setParticipants ] = useState([]);
@@ -14,8 +15,7 @@ export default function App() {
 
 	useEffect(() => {
 		const fetchParticipants = async () => {
-			const response = await fetch('http://localhost:5596/participant');
-			const data = await response.json();
+			const data = await getParticipants();
 			setParticipants(data);
 		};
 		fetchParticipants();
